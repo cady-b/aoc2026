@@ -1,0 +1,28 @@
+[workspace]
+resolver = "3"
+members = ["runner", "problems", "aoc_plumbing"]
+default-members = ["runner"]
+
+[workspace.package]
+version = "0.1.0"
+edition = "2024"
+license = "MIT"
+
+[profile.release]
+lto = "thin"
+strip = true
+codegen-units = 1
+
+[profile.dev]
+opt-level = 2
+debug = "line-tables-only"
+
+[profile.dev.package."*"]
+debug = false
+
+[workspace.dependencies]
+problems = { path = "problems" }
+aoc_plumbing = { path = "aoc_plumbing" }
+
+itertools = "0.15.0"
+unscanny = "0.1"
