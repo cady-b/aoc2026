@@ -1,0 +1,11 @@
+[package]
+name = "problems"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[dependencies]
+aoc_plumbing = { workspace = true }
+
+itertools = { workspace = true }
+unscanny = { workspace = true }
