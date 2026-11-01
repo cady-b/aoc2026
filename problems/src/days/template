@@ -1,7 +1,7 @@
 use super::*;
 
-type Base = u64; // type that generally fits the data worked on (sint / uint, width, float, etc.)
-pub static PROBLEM: Problem = Problem::new(2026, 1, Some(solver_a), None);
+type Base = u64; // Type that generally fits the data worked on (sint / uint, width, float, etc.)
+pub static PROBLEM: Problem = Problem::new(2025, 1, Some(solver_a), None);
 
 pub fn solver_a(input: &str) -> AocResult {
   todo!()
@@ -11,7 +11,7 @@ pub fn solver_a(input: &str) -> AocResult {
 //   todo!()
 // }
 
-/// make sure we're passing the test cases
+/// Make sure we're passing the test cases.
 #[cfg(test)]
 mod test {
    use super::*;
