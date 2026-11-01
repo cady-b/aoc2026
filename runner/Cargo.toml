@@ -7,3 +7,6 @@ license.workspace = true
 [dependencies]
 aoc_plumbing = { workspace = true }
 problems = { workspace = true }
+
+clap = { workspace = true }
+rayon = { workspace = true }

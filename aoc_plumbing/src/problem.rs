@@ -88,13 +88,10 @@ impl Problem {
 
   pub const fn get_day(&self) -> AocDay { self.day }
 
-  pub fn run(&self, cache: &Cache) -> Option<Duration> {
-    let entry = match cache.entries.get(&self.day).ok_or_else(|| {}) {
+  pub fn run(&self, cache: &Cache) -> Result<Duration, Box<dyn std::error::Error>> {
+    let entry = match cache.entries.get(&self.day).ok_or(()) {
       Ok(e) => e,
-      Err(_) => {
-        eprintln!("Cannot find input for day: {}/{:02}", self.day.year, self.day.day);
-        return None;
-      }
+      Err(_) => return Err(format!("Cannot find input for day: {}/{:02}", self.day.year, self.day.day).into()),
     };
 
     let a = self.solvers.0.map(|s| (s, AocProblemPart::A));
@@ -128,12 +125,12 @@ impl Problem {
       }
     });
 
-    println!("╭──┄┈ ★ ☃  ★\n│ {}/{:02}: {}", self.day.year, self.day.day, entry.title);
+    let mut out = format!("╭──┄┈ ★ ☃  ★\n│ {}/{:02}: {}", self.day.year, self.day.day, entry.title);
     for result in res {
-      println!("│ {result}");
+      out += &format!("\n│ {result}");
     }
-    println!("{}", "╰──┄┈");
+    println!("{out}\n╰──┄┈");
 
-    Some(total_runtime)
+    Ok(total_runtime)
   }
 }
